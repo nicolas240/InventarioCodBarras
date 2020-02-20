@@ -1,0 +1,1 @@
+# InventarioCodBarras

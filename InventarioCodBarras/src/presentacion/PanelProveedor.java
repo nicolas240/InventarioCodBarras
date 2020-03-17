@@ -34,6 +34,7 @@ public class PanelProveedor extends JPanel implements ActionListener{
     private JButton btnGuardar;
     private JButton btnEliminar;
     private JLabel lblInfo;
+
     private JTextField txtNombre;
 	
 	public PanelProveedor() {
@@ -147,5 +148,9 @@ public class PanelProveedor extends JPanel implements ActionListener{
 
     public JButton getBtnEliminar() {
         return btnEliminar;
+    }
+    
+    public JTextField getTxtRut() {
+        return txtRut;
     }
 }

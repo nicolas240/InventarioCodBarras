@@ -157,5 +157,9 @@ public class PanelBodega extends JPanel implements ActionListener{
 
     public JButton getBtnEliminar() {
         return btnEliminar;
-    }        
+    }  
+
+    public JTextField getTxtAdmin() {
+        return txtAdmin;
+    }    
 }

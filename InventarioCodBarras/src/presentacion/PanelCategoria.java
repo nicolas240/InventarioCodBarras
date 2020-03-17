@@ -19,6 +19,8 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class PanelCategoria extends JPanel implements ActionListener{
 
+    ControladorCategoria controlador;
+    
     private JLabel lblProducto;
     private JLabel lblIngreseId;
     private JTextField txtIngreseId;
@@ -61,7 +63,7 @@ public class PanelCategoria extends JPanel implements ActionListener{
 		btnBuscarCategoria = new JButton("Buscar Categoria");
 		btnBuscarCategoria.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBuscarCategoria.setBounds(373, 74, 160, 25);
-		btnBuscarCategoria.addActionListener(this);
+		btnBuscarCategoria.addActionListener(getControl());
 		this.add(btnBuscarCategoria);
 		
 		separador = new JSeparator();
@@ -100,13 +102,13 @@ public class PanelCategoria extends JPanel implements ActionListener{
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuardar.setBounds(245, 469, 97, 25);
-		btnGuardar.addActionListener(this);
+		btnGuardar.addActionListener(getControl());
 		this.add(btnGuardar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEliminar.setBounds(354, 470, 97, 25);
-		btnEliminar.addActionListener(this);
+		btnEliminar.addActionListener(getControl());
 		this.add(btnEliminar);
 		
 		
@@ -139,6 +141,22 @@ public class PanelCategoria extends JPanel implements ActionListener{
 
     	}
 		
-	}
-}
+    }
+    public ControladorCategoria getControl() {
+        if(controlador == null){
+            controlador = new ControladorCategoria(this);
+        }
+        return controlador;
+    }
+    public JButton getBtnBuscarBodega() {
+        return btnBuscarCategoria;
+    }
 
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+}

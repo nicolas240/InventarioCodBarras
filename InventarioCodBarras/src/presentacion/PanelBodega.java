@@ -18,6 +18,8 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class PanelBodega extends JPanel implements ActionListener{
 
+    ControladorBodega controlador;
+    
     private JLabel lblBodega;
     private JLabel lblBusBodega;
     private JTextField txtBusBodega;
@@ -30,6 +32,7 @@ public class PanelBodega extends JPanel implements ActionListener{
     private JTextField txtCapacidad;
     private JLabel lblAdmin;
     private JButton btnGuardar;
+
     private JButton btnEliminar;
     private JLabel lblInfo;
     private JTextField txtAdmin;
@@ -61,7 +64,7 @@ public class PanelBodega extends JPanel implements ActionListener{
 		btnBuscarBodega = new JButton("Buscar Bodega");
 		btnBuscarBodega.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBuscarBodega.setBounds(373, 74, 160, 25);
-		btnBuscarBodega.addActionListener(this);
+		btnBuscarBodega.addActionListener(getControl());
 		this.add(btnBuscarBodega);
 		
 		separador = new JSeparator();
@@ -100,13 +103,13 @@ public class PanelBodega extends JPanel implements ActionListener{
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuardar.setBounds(245, 469, 97, 25);
-		btnGuardar.addActionListener(this);
+		btnGuardar.addActionListener(getControl());
 		this.add(btnGuardar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEliminar.setBounds(354, 470, 97, 25);
-		btnEliminar.addActionListener(this);
+		btnEliminar.addActionListener(getControl());
 		this.add(btnEliminar);
 		
 		
@@ -137,20 +140,22 @@ public class PanelBodega extends JPanel implements ActionListener{
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
 		
-		//Evento boton Buscar Bodega
-    	if(event.getSource() == btnBuscarBodega) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra la bodega
-    	}
-    	
-    	//Evento boton Guardar
-    	if(event.getSource() == btnGuardar) {
-
-    	}
-    	
-    	//Evento boton Eliminar
-    	if(event.getSource() == btnEliminar) {
-
-    	}
-		
 	}
+        public ControladorBodega getControl() {
+        if(controlador == null){
+            controlador = new ControladorBodega(this);
+        }
+        return controlador;
+    }
+    public JButton getBtnBuscarBodega() {
+        return btnBuscarBodega;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }        
 }

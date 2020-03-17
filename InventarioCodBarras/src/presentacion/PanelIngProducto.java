@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class PanelIngProducto extends JPanel implements ActionListener{
 
+    ControladorIngProducto controlador;
     //PRODUCTO
     private JLabel lblProducto;
     private JLabel lblCodigoBarras;
@@ -148,13 +149,13 @@ public class PanelIngProducto extends JPanel implements ActionListener{
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnIngresar.setBounds(316, 419, 97, 25);
-		btnIngresar.addActionListener(this);
+		btnIngresar.addActionListener(getControl());
 		this.add(btnIngresar);
 		
 		btnVerificar = new JButton("Verificar");
 		btnVerificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVerificar.setBounds(474, 125, 97, 25);
-		btnVerificar.addActionListener(this);
+		btnVerificar.addActionListener(getControl());
 		this.add(btnVerificar);
 		
 		
@@ -164,19 +165,24 @@ public class PanelIngProducto extends JPanel implements ActionListener{
 		this.add(lblInfo);
 	}
 
+    public JButton getBtnIngresar() {
+        return btnIngresar;
+    }
+
+    public JButton getBtnVerificar() {
+        return btnVerificar;
+    }
+public ControladorIngProducto getControl() {
+        if(controlador == null){
+            controlador = new ControladorIngProducto(this);
+        }
+        return controlador;
+    }
 	
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
     	
-    	//Evento boton Guardar
-    	if(event.getSource() == btnIngresar) {
 
-    	}
-    	
-    	//Evento boton Eliminar
-    	if(event.getSource() == btnVerificar) {
-
-    	}
 		
 	}
 

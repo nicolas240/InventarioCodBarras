@@ -152,35 +152,35 @@ public class VentanaIngreso extends JFrame implements ActionListener{
 		
         panelAux.removeAll();
 		
-		lblLogin = new JLabel("Admin");
-		lblLogin.setIcon(new ImageIcon(VentanaIngreso.class.getResource("/img/bodega.png")));
-		lblLogin.setBounds(99, 13, 90, 90);
-		panelAux.add(lblLogin);
-		
-		btnLoginBod = new JButton("Ingresar");
-		btnLoginBod.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnLoginBod.setBounds(92, 244, 97, 25);
-		panelAux.add(btnLoginBod);
-		btnLoginBod.addActionListener(getControl());
-		
-		btnAtras = new JButton("<-");
-		btnAtras.setMargin(new Insets(2, 14, 2, 2));
-		btnAtras.setToolTipText("Atras");
-		btnAtras.setIcon(new ImageIcon(VentanaIngreso.class.getResource("/img/atras.png")));
-		btnAtras.setBounds(12, 13, 30, 30);
-		panelAux.add(btnAtras);
-		btnAtras.addActionListener(getControl());
-		
-		lblDocumento = new JLabel("No. Documento:");
-		lblDocumento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblDocumento.setBounds(83, 141, 120, 25);
-		panelAux.add(lblDocumento);
-		
-		txtDocumento = new JTextField();
-		txtDocumento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtDocumento.setBounds(83, 177, 116, 25);
-		panelAux.add(txtDocumento);
-		txtDocumento.setColumns(10);
+        lblLogin = new JLabel("Admin");
+        lblLogin.setIcon(new ImageIcon(VentanaIngreso.class.getResource("/img/bodega.png")));
+        lblLogin.setBounds(99, 13, 90, 90);
+        panelAux.add(lblLogin);
+
+        btnLoginBod = new JButton("Ingresar");
+        btnLoginBod.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnLoginBod.setBounds(92, 244, 97, 25);
+        panelAux.add(btnLoginBod);
+        btnLoginBod.addActionListener(getControl());
+
+        btnAtras = new JButton("<-");
+        btnAtras.setMargin(new Insets(2, 14, 2, 2));
+        btnAtras.setToolTipText("Atras");
+        btnAtras.setIcon(new ImageIcon(VentanaIngreso.class.getResource("/img/atras.png")));
+        btnAtras.setBounds(12, 13, 30, 30);
+        panelAux.add(btnAtras);
+        btnAtras.addActionListener(getControl());
+
+        lblDocumento = new JLabel("No. Documento:");
+        lblDocumento.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblDocumento.setBounds(83, 141, 120, 25);
+        panelAux.add(lblDocumento);
+
+        txtDocumento = new JTextField();
+        txtDocumento.setFont(new Font("Tahoma", Font.BOLD, 14));
+        txtDocumento.setBounds(83, 177, 116, 25);
+        panelAux.add(txtDocumento);
+        txtDocumento.setColumns(10);
 		
         panelAux.revalidate();
         panelAux.repaint();

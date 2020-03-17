@@ -19,6 +19,7 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class PanelProducto extends JPanel implements ActionListener{
 
+    private ControladorProducto controlador;
     //PRODUCTO
     private JLabel lblProducto;
     private JLabel lblIngreseCodigoBarras;
@@ -73,7 +74,7 @@ public class PanelProducto extends JPanel implements ActionListener{
 		btnBuscarProducto = new JButton("Buscar Producto");
 		btnBuscarProducto.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBuscarProducto.setBounds(373, 74, 150, 25);
-		btnBuscarProducto.addActionListener(this);
+		btnBuscarProducto.addActionListener(getControlador());
 		this.add(btnBuscarProducto);
 		
 		separador = new JSeparator();
@@ -168,13 +169,13 @@ public class PanelProducto extends JPanel implements ActionListener{
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuardar.setBounds(245, 469, 97, 25);
-		btnGuardar.addActionListener(this);
+		btnGuardar.addActionListener(getControlador());
 		this.add(btnGuardar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEliminar.setBounds(354, 470, 97, 25);
-		btnEliminar.addActionListener(this);
+		btnEliminar.addActionListener(getControlador());
 		this.add(btnEliminar);
 		
 		
@@ -188,21 +189,25 @@ public class PanelProducto extends JPanel implements ActionListener{
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
 		
-		//Evento boton Buscar Producto
-    	if(event.getSource() == btnBuscarProducto) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra el producto
-    	}
-    	
-    	//Evento boton Guardar
-    	if(event.getSource() == btnGuardar) {
-
-    	}
-    	
-    	//Evento boton Eliminar
-    	if(event.getSource() == btnEliminar) {
-
-    	}
 		
 	}
 
+            public ControladorProducto getControlador() {
+        if(controlador == null){
+            controlador = new ControladorProducto(this);
+        }
+        return controlador;
+    }
+
+    public JButton getBtnBuscarProducto() {
+        return btnBuscarProducto;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
 }

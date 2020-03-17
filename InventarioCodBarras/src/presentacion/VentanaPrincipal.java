@@ -14,13 +14,14 @@ import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class VentanaPrincipal extends JFrame implements ActionListener {
-
-	private Modelo modelo;
-	
+    private Modelo modelo;
+    private ControladorVPrincipal controlador;
+    
     private JPanel panelPrincipal;
     private JPanel panelMenu;
     private PanelReloj panelReloj;
     private JPanel panelAux;
+
     
     private JButton btnProducto;
     private JButton btnCategoria;
@@ -30,6 +31,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     
     private JButton btnIngresarProd;
     private JButton btnRetirarProd;
+
+
     private JLabel lblUdstock;
     
 
@@ -96,35 +99,35 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		btnProducto.setToolTipText("Registrar Producto");
 		btnProducto.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnProducto.png")));
 		btnProducto.setBounds(10, 10, 80, 80);
-		btnProducto.addActionListener(this);
+		btnProducto.addActionListener(getControl());
 		panelMenu.add(btnProducto);
 			
 		btnCategoria = new JButton("");
 		btnCategoria.setToolTipText("Registrar Categoria");
 		btnCategoria.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnCategoria.png")));
 		btnCategoria.setBounds(100, 10, 80, 80);
-		btnCategoria.addActionListener(this);
+		btnCategoria.addActionListener(getControl());
 		panelMenu.add(btnCategoria);
 			
 		btnBodega = new JButton("");
         btnBodega.setToolTipText("Registrar Bodega");
         btnBodega.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnBodega.png")));
 		btnBodega.setBounds(190, 10, 80, 80);
-        btnBodega.addActionListener(this);
+        btnBodega.addActionListener(getControl());
 		panelMenu.add(btnBodega);
 		
 		btnProveedor = new JButton("");
 		btnProveedor.setToolTipText("Registrar Proveedor");
 		btnProveedor.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnProveedor.png")));
 	    btnProveedor.setBounds(280, 10, 80, 80);
-		btnProveedor.addActionListener(this);
+		btnProveedor.addActionListener(getControl());
 		panelMenu.add(btnProveedor);
 			
 		btnSalir = new JButton("");
 		btnSalir.setToolTipText("Salir");
 		btnSalir.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnSalir.png")));
 		btnSalir.setBounds(370, 10, 80, 80);
-		btnSalir.addActionListener(this);
+		btnSalir.addActionListener(getControl());
 		panelMenu.add(btnSalir);
 		
 		panelMenu.revalidate();
@@ -141,21 +144,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		btnIngresarProd.setToolTipText("Ingresar producto");
 		btnIngresarProd.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnIngresarProd.png")));
 		btnIngresarProd.setBounds(10, 10, 80, 80);
-		btnIngresarProd.addActionListener(this);
+		btnIngresarProd.addActionListener(getControl());
 		panelMenu.add(btnIngresarProd);
 			
 		btnRetirarProd = new JButton("");
 		btnRetirarProd.setToolTipText("Retirar Producto");
 		btnRetirarProd.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnRetirarProd.png")));
 		btnRetirarProd.setBounds(100, 10, 80, 80);
-		btnRetirarProd.addActionListener(this);
+		btnRetirarProd.addActionListener(getControl());
 		panelMenu.add(btnRetirarProd);
 			
 		btnSalir = new JButton("");
 		btnSalir.setToolTipText("Salir");
 		btnSalir.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/btnSalir.png")));
 		btnSalir.setBounds(190, 10, 80, 80);
-		btnSalir.addActionListener(this);
+		btnSalir.addActionListener(getControl());
 		panelMenu.add(btnSalir);
 		
 		panelMenu.revalidate();
@@ -165,103 +168,106 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     
     //Llamar al panel para busqueda/edicion/ingreso de un productos
     public void panelProducto() {
+        panelAux.removeAll();
     	PanelProducto panelProd = new PanelProducto();
         panelAux = panelProd;
-        panelPrincipal.add(panelAux);      
+        panelPrincipal.add(panelAux);
+        panelAux.revalidate();
+        panelAux.repaint();
     }
     
     //Llamar al panel para busqueda/edicion/ingreso de una categoria
     public void panelCategoria() {
     	PanelCategoria panelCategoria = new PanelCategoria();
+        panelAux.removeAll(); 
         panelAux = panelCategoria;
-        panelPrincipal.add(panelAux);      
+        panelPrincipal.add(panelAux);
+        panelAux.revalidate();
+        panelAux.repaint();
     }
     
     //Llamar al panel para busqueda/edicion/ingreso de una bodega
     public void panelBodega() {
     	PanelBodega panelBodega = new PanelBodega();
+            panelAux.removeAll();
         panelAux = panelBodega;
         panelPrincipal.add(panelAux);      
+        panelAux.revalidate();
+        panelAux.repaint();  
     }
     
     //Llamar al panel para busqueda/edicion/ingreso de un proveedor
     public void panelProveedor() {
     	PanelProveedor panelProveedor = new PanelProveedor();
+        panelAux.removeAll();
         panelAux = panelProveedor;
         panelPrincipal.add(panelAux);      
+        panelAux.revalidate();
+        panelAux.repaint();
     }
     
     //Llamar al panel para ingresar un producto
     public void panelIngProducto() {
     	PanelIngProducto panelIngProducto = new PanelIngProducto();
+        panelAux.removeAll();
         panelAux = panelIngProducto;
         panelPrincipal.add(panelAux);      
+        panelAux.revalidate();
+        panelAux.repaint();
     }
     
     //Llamar al panel para retirar un producto
     public void panelRetProducto() {
     	PanelRetProducto panelRetProducto = new PanelRetProducto();
+        panelAux.removeAll();
         panelAux = panelRetProducto;
         panelPrincipal.add(panelAux);      
+        panelAux.revalidate();
+        panelAux.repaint(); 
     }
     
     //Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
 		
-    	//Evento boton Producto (Admin)
-    	if(event.getSource() == btnProducto) {
-            panelAux.removeAll();
-            panelProducto();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Categoria (Admin)
-    	if(event.getSource() == btnCategoria) {
-            panelAux.removeAll();
-            panelCategoria();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Bodega (Admin)
-    	if(event.getSource() == btnBodega) {
-            panelAux.removeAll();
-            panelBodega();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Proveedor
-    	if(event.getSource() == btnProveedor) {
-            panelAux.removeAll();
-            panelProveedor();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Ingresar Producto (Bodega)
-    	if(event.getSource() == btnIngresarProd) {
-            panelAux.removeAll();
-            panelIngProducto();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Retirar Producto (Bodega)
-    	if(event.getSource() == btnRetirarProd) {
-            panelAux.removeAll();
-            panelRetProducto();
-            panelAux.revalidate();
-            panelAux.repaint(); 
-    	}
-    	
-    	//Evento boton Salir
-    	if(event.getSource() == btnSalir) {
-    		panelAux.removeAll();
-    		this.dispose();
-    		modelo.iniciar();
-    	}
-		
-	}
+        }
+    public ControladorVPrincipal getControl() {
+        if(controlador == null){
+            controlador = new ControladorVPrincipal(this);
+        }
+        return controlador;
+    }
+        
+    public Modelo getModelo() {
+    	return modelo;
+    }
+    public JButton getBtnProducto() {
+        return btnProducto;
+    }
+
+    public JButton getBtnCategoria() {
+        return btnCategoria;
+    }
+
+    public JButton getBtnProveedor() {
+        return btnProveedor;
+    }
+
+    public JButton getBtnBodega() {
+        return btnBodega;
+    }
+
+    public JButton getBtnSalir() {
+        return btnSalir;
+    }
+
+    public JButton getBtnIngresarProd() {
+        return btnIngresarProd;
+    }
+
+    public JButton getBtnRetirarProd() {
+        return btnRetirarProd;
+    }       
+        public JPanel getPanelAux() {
+        return panelAux;
+    }
 }

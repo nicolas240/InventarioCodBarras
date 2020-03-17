@@ -18,6 +18,8 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class PanelProveedor extends JPanel implements ActionListener{
 
+    private ControladorProveedor controlador;
+    
     private JLabel lblProveedor;
     private JLabel lblBusRut;
     private JTextField txtBusRut;
@@ -60,7 +62,7 @@ public class PanelProveedor extends JPanel implements ActionListener{
 		btnBuscarProveedor = new JButton("Buscar Proveedor");
 		btnBuscarProveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBuscarProveedor.setBounds(373, 74, 160, 25);
-		btnBuscarProveedor.addActionListener(this);
+		btnBuscarProveedor.addActionListener(getControlador());
 		this.add(btnBuscarProveedor);
 		
 		separador = new JSeparator();
@@ -99,13 +101,13 @@ public class PanelProveedor extends JPanel implements ActionListener{
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuardar.setBounds(245, 469, 97, 25);
-		btnGuardar.addActionListener(this);
+		btnGuardar.addActionListener(getControlador());
 		this.add(btnGuardar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEliminar.setBounds(354, 470, 97, 25);
-		btnEliminar.addActionListener(this);
+		btnEliminar.addActionListener(getControlador());
 		this.add(btnEliminar);
 		
 		
@@ -125,20 +127,25 @@ public class PanelProveedor extends JPanel implements ActionListener{
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
 		
-		//Evento boton Buscar Bodega
-    	if(event.getSource() == btnBuscarProveedor) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra la bodega
-    	}
-    	
-    	//Evento boton Guardar
-    	if(event.getSource() == btnGuardar) {
-
-    	}
-    	
-    	//Evento boton Eliminar
-    	if(event.getSource() == btnEliminar) {
-
-    	}
+	
 		
 	}
+            public ControladorProveedor getControlador() {
+       if(controlador == null){
+            controlador = new ControladorProveedor(this);
+        }
+        return controlador;
+    }
+
+    public JButton getBtnBuscarProveedor() {
+        return btnBuscarProveedor;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
 }

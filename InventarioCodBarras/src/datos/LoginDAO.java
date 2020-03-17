@@ -25,13 +25,18 @@ public class LoginDAO {
 			db = new ConexionDB();
 			
 			stmt = db.getC().createStatement();
-			ResultSet rs = stmt.executeQuery( "SELECT * FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
+			/*rs = stmt.executeQuery( "SELECT * FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
 											+"' AND usuario='"+venIngreso.getTxtUsuario().getText()+"';" );
+			*/
+			ResultSet rs = stmt.executeQuery( "SELECT count(*) FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
+					+"' AND usuario='"+venIngreso.getTxtUsuario().getText()+"';" );
 			
-			System.out.println("Usuario: " + rs.getInt("usuario"));
-			System.out.println("Pass: " + rs.getString("pass"));
+			
+			System.out.println("Cuenta: " + rs.getInt("count(*)"));
+			//System.out.println("Usuario: " + rs.getInt("usuario"));
+			//System.out.println("Pass: " + rs.getString("pass"));
 
-			if(!rs.next())
+			if(rs.getInt("count(*)") == 0)
 				existe = false;
 			else
 				existe = true;

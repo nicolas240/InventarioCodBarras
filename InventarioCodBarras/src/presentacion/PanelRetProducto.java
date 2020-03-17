@@ -18,6 +18,8 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class PanelRetProducto extends JPanel implements ActionListener{
 
+    ControladorRetProducto controlador;
+    
     //PRODUCTO
     private JLabel lblProducto;
     private JLabel lblCodigoBarras;
@@ -148,13 +150,13 @@ public class PanelRetProducto extends JPanel implements ActionListener{
 		btnRetirar = new JButton("Retirar");
 		btnRetirar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRetirar.setBounds(316, 419, 97, 25);
-		btnRetirar.addActionListener(this);
+		btnRetirar.addActionListener(getControlador());
 		this.add(btnRetirar);
 		
 		btnVerificar = new JButton("Verificar");
 		btnVerificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVerificar.setBounds(474, 125, 97, 25);
-		btnVerificar.addActionListener(this);
+		btnVerificar.addActionListener(getControlador());
 		this.add(btnVerificar);
 		
 		
@@ -167,17 +169,21 @@ public class PanelRetProducto extends JPanel implements ActionListener{
 	
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
-    	
-    	//Evento boton Guardar
-    	if(event.getSource() == btnRetirar) {
-
-    	}
-    	
-    	//Evento boton Eliminar
-    	if(event.getSource() == btnVerificar) {
-
-    	}
 		
-	}
+    }
+    public ControladorRetProducto getControlador() {
+        if(controlador == null){
+            controlador = new ControladorRetProducto(this);
+        }
+        return controlador;
+    }
 
+    public JButton getBtnRetirar() {
+        return btnRetirar;
+    }
+
+    public JButton getBtnVerificar() {
+        return btnVerificar;
+    }
+        
 }

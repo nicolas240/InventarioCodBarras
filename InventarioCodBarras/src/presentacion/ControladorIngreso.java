@@ -10,7 +10,7 @@ import datos.*;
 
 public class ControladorIngreso implements ActionListener{
 	
-	private VentanaIngreso venIngreso;
+	private final VentanaIngreso venIngreso;
 	private LoginDAO login;
 	
 	public ControladorIngreso(VentanaIngreso vIngreso) {
@@ -22,12 +22,12 @@ public class ControladorIngreso implements ActionListener{
 		
      	//Evento boton Administrador (Cargar login para administrador)
     	if(event.getSource() == venIngreso.getBtnAdministrador()){
-    		venIngreso.getModelo().getVenIngreso().panelLoginAdmin();
+    		venIngreso.panelLoginAdmin();
     	}
     	
     	//Evento boton Bodega (Cargar login para bodegueros)
     	if(event.getSource() == venIngreso.getBtnBodega()){
-    		venIngreso.getModelo().getVenIngreso().panelLoginBodega();     
+    		venIngreso.panelLoginBodega();     
     	}
     	
     	//Evento boton Login Admin
@@ -39,7 +39,7 @@ public class ControladorIngreso implements ActionListener{
     		login = new LoginDAO(venIngreso);
 			
     		if(login.loginAdmin()) {
-	    		venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
+	    		venIngreso.dispose();	//Cierra la ventana actual
 	    		venIngreso.getModelo().admin();
     		}else {
     			JOptionPane.showMessageDialog(null, "Usuario O Password incorrecto");
@@ -50,14 +50,14 @@ public class ControladorIngreso implements ActionListener{
     	if(event.getSource() == venIngreso.getBtnLoginBod()) {
     		//Aqui se llama la consulta pare verificar que el documento del usiario de bodega existe en la base de datos  
     		
-    		venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
+    		venIngreso.dispose();	//Cierra la ventana actual
     		venIngreso.getModelo().bodega();
     		
     	}
     	
     	//Evento boton Atras
     	if(event.getSource() == venIngreso.getBtnAtras()) {
-    		venIngreso.getModelo().getVenIngreso().panelBotonesSeleccion();
+    		venIngreso.panelBotonesSeleccion();
             
     	}
 		

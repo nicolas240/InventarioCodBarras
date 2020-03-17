@@ -32,27 +32,28 @@ public class ControladorIngreso implements ActionListener{
     	
     	//Evento boton Login Admin
     	if(event.getSource() == venIngreso.getBtnLoginAdm()) {
-    		//Aqui se llama la consulta pare verificar que el admin existe en la base de datos 
-    		System.out.println("SELECT * FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
-					+"' AND usuario='"+venIngreso.getTxtUsuario().getText()+"';");
-    		
+    		//Llamado a la consulta de la BD
     		login = new LoginDAO(venIngreso);
 			
     		if(login.loginAdmin()) {
-	    		venIngreso.dispose();	//Cierra la ventana actual
+	    		venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
 	    		venIngreso.getModelo().admin();
     		}else {
-    			JOptionPane.showMessageDialog(null, "Usuario O Password incorrecto");
+    			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
     		}
     	}
     	
     	//Evento boton Login Bodega
     	if(event.getSource() == venIngreso.getBtnLoginBod()) {
-    		//Aqui se llama la consulta pare verificar que el documento del usiario de bodega existe en la base de datos  
-    		
-    		venIngreso.dispose();	//Cierra la ventana actual
-    		venIngreso.getModelo().bodega();
-    		
+    		//Llamado a la consulta de la BD 
+    		login = new LoginDAO(venIngreso);
+			
+    		if(login.loginBodega()){
+    			venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
+        		venIngreso.getModelo().bodega();
+    		}else {
+    			JOptionPane.showMessageDialog(null, "Documento incorrecto");
+    		}	
     	}
     	
     	//Evento boton Atras

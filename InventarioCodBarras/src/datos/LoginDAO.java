@@ -17,6 +17,7 @@ public class LoginDAO {
 		venIngreso = vIngreso;
 	}
 	
+	//Login de Administrador
 	public boolean loginAdmin(){
 		
 		boolean existe = false;
@@ -25,21 +26,15 @@ public class LoginDAO {
 			db = new ConexionDB();
 			
 			stmt = db.getC().createStatement();
-			/*rs = stmt.executeQuery( "SELECT * FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
-											+"' AND usuario='"+venIngreso.getTxtUsuario().getText()+"';" );
-			*/
-			ResultSet rs = stmt.executeQuery( "SELECT count(*) FROM Cuenta WHERE pass='"+venIngreso.getPwdPassword().getText() 
+			//Consulta que verifica si existe una cuenta con los datos ingresados
+			ResultSet rs = stmt.executeQuery( "SELECT count(*) FROM Cuenta WHERE pass='"+ String.valueOf(venIngreso.getPwdPassword().getPassword()) 
 					+"' AND usuario='"+venIngreso.getTxtUsuario().getText()+"';" );
-			
-			
-			System.out.println("Cuenta: " + rs.getInt("count(*)"));
-			//System.out.println("Usuario: " + rs.getInt("usuario"));
-			//System.out.println("Pass: " + rs.getString("pass"));
 
-			if(rs.getInt("count(*)") == 0)
-				existe = false;
-			else
+			//Si la cuenta existe arroja verdadero, de lo contrario sera falso
+			if(rs.getInt("count(*)") == 1)
 				existe = true;
+			else
+				existe = false;
 			
 			rs.close();
 			stmt.close();
@@ -48,10 +43,42 @@ public class LoginDAO {
 			
 		}catch ( Exception e ) {
 		   System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-		   //JOptionPane.showMessageDialog(null, "Base De Datos no disponible en el momento");
+		   JOptionPane.showMessageDialog(null, "Base de datos no disponible en el momento");
 	   	}
 		return existe;
 		
 	}
+	
+	//Login de Administrador
+		public boolean loginBodega(){
+			
+			boolean existe = false;
+				
+			try {
+				db = new ConexionDB();
+				
+				stmt = db.getC().createStatement();
+				//Consulta que verifica si existe una cuenta con los datos ingresados
+				///SELECT id from Trabajador where id = 1000000003;
+				ResultSet rs = stmt.executeQuery( "SELECT count(id) FROM Trabajador WHERE id='"+venIngreso.getTxtDocumento().getText()+"';" );
+				
+				//Si la cuenta existe arroja verdadero, de lo contrario sera falso
+				if(rs.getInt("count(id)") == 1)
+					existe = true;
+				else
+					existe = false;
+				
+				rs.close();
+				stmt.close();
+				db.getC().close();
+				System.out.println("Consulta Satisfactoria");
+				
+			}catch ( Exception e ) {
+			   System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			   JOptionPane.showMessageDialog(null, "Base de datos no disponible en el momento");
+		   	}
+			return existe;
+			
+		}
 
 }

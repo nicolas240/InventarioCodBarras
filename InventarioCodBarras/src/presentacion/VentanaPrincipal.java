@@ -228,8 +228,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     
     //Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
-		
-        }
+    }
+	
+	//Funciones get
     public ControladorVPrincipal getControl() {
         if(controlador == null){
             controlador = new ControladorVPrincipal(this);

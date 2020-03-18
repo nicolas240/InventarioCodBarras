@@ -2,8 +2,6 @@ package presentacion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 import datos.*;
@@ -41,6 +39,8 @@ public class ControladorIngreso implements ActionListener{
     		}else {
     			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
     		}
+    		
+    		venIngreso.getModelo().setUsuario( Integer.parseInt( venIngreso.getTxtUsuario().getText() ) );
     	}
     	
     	//Evento boton Login Bodega
@@ -53,7 +53,9 @@ public class ControladorIngreso implements ActionListener{
         		venIngreso.getModelo().bodega();
     		}else {
     			JOptionPane.showMessageDialog(null, "Documento incorrecto");
-    		}	
+    		}
+    		
+    		venIngreso.getModelo().setUsuario( Integer.parseInt( venIngreso.getTxtDocumento().getText() ) );
     	}
     	
     	//Evento boton Atras

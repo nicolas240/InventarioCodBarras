@@ -8,6 +8,8 @@ public class Modelo{
     
     private VentanaIngreso venIngreso;
     private VentanaPrincipal venPrincipal;
+    
+    private int usuario;
 
     // Hace visible la ventana de ingreso
     public void iniciar() {
@@ -52,6 +54,14 @@ public class Modelo{
         
         return venPrincipal;
     }
+
+	public int getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(int usuario) {
+		this.usuario = usuario;
+	}
 
 }
 

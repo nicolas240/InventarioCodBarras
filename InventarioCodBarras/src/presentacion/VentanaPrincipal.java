@@ -169,11 +169,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     //Llamar al panel para busqueda/edicion/ingreso de un productos
     public void panelProducto() {
         panelAux.removeAll();
+        
     	PanelProducto panelProd = new PanelProducto();
+    	panelProd.getTxtFechaingreso().setText(panelReloj.getLblFecha().getText());
+    	
         panelAux = panelProd;
         panelPrincipal.add(panelAux);
         panelAux.revalidate();
         panelAux.repaint();
+        
     }
     
     //Llamar al panel para busqueda/edicion/ingreso de una categoria
@@ -267,8 +271,16 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
     public JButton getBtnRetirarProd() {
         return btnRetirarProd;
-    }       
-        public JPanel getPanelAux() {
+    }   
+    public JPanel getPanelAux() {
         return panelAux;
     }
+
+	public PanelReloj getPanelReloj() {
+		return panelReloj;
+	}
+
+	public void setPanelReloj(PanelReloj panelReloj) {
+		this.panelReloj = panelReloj;
+	}
 }

@@ -30,7 +30,6 @@ public class PanelCategoria extends JPanel implements ActionListener{
     private JTextField txtCodigobarras;
     private JLabel lblNombre;
     private JTextField txtNombre;
-    
     private JLabel lblDescripcion;
     private JButton btnGuardar;
     private JButton btnEliminar;
@@ -160,8 +159,4 @@ public class PanelCategoria extends JPanel implements ActionListener{
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
-
-    public JTextField getTxtIngreseId() {
-        return txtIngreseId;
-    }    
 }

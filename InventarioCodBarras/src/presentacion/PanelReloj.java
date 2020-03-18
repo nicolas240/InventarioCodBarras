@@ -40,9 +40,13 @@ public class PanelReloj extends JPanel{
     }
     
     public static String obtenerFecha() {
-    	String formato = "yyyy-MM-dd";
+    	String formato = "dd-MM-yyyy";
     	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
     	LocalDateTime ahora = LocalDateTime.now();
     	return formateador.format(ahora);
     }
+
+	public JLabel getLblFecha() {
+		return lblFecha;
+	}
 }

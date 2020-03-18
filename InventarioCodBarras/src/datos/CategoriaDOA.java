@@ -25,9 +25,9 @@ public class CategoriaDOA {
 		pCategoria = panelCategoria;
 		
 	}
-	
-	//Registrar una nueva categoria
-	public boolean registrarCategoria(){
+	/*
+	//Registrar un nuevo producto
+	public boolean registrarProducto(){
 		
 		boolean existe = false;
 	
@@ -36,11 +36,12 @@ public class CategoriaDOA {
 			
 			stmt = db.getC().createStatement();
 			
-			//--Categoria categoria(id I, nomb T, descr T)
-                        //Eje--INSERT INTO Categoria VALUES (1,'detergente','Varios tipos de detergentes');
+			//producto(nomb T, fIng T, codB T, perec I, idC I, idP I)
+			//Eje--INSERT INTO Producto VALUES ('ariel ropa color','14-03-2020','ARI01',1,1,200000002);
 			
-			ResultSet rs = stmt.executeQuery( "INSERT INTO Categoria VALUES ("+ id + ",'"
-											+ nombre + "','"+ descripcion + "');" );
+			ResultSet rs = stmt.executeQuery( "INSERT INTO PProducto VALUES ('"+ nombre + ", "
+											+ fecha + ", "+ codBarras + ", "+ perecedero + ", " + categoria + ", "
+											+ proveedor + "');" );
 			
 			rs.close();
 			stmt.close();
@@ -56,7 +57,7 @@ public class CategoriaDOA {
 	}
 	
 	//Buscar un producto
-	public boolean buscarCategoria(){
+	public boolean buscarProducto(){
 		
 		boolean existe = false;
 	
@@ -65,13 +66,10 @@ public class CategoriaDOA {
 			
 			stmt = db.getC().createStatement();
 			
-			//Categoria categoria(id I, nomb T, descr T))
-			//Eje--SELECT * FROM Categoria WHERE id=1; 
+			//producto(nomb T, fIng T, codB T, perec I, idC I, idP I)
+			//Eje--SELECT * FROM Producto WHERE codBarras='ARI01'; 
 			
-			ResultSet rs = stmt.executeQuery( 
-                                "SELECT * FROM Categoria WHERE id='" + 
-                                        panelCategoria.getTxtIngreseId().toString()
-                                        + "';" );
+			ResultSet rs = stmt.executeQuery( "SELECT * FROM Producto WHERE codBarras='" + codBarras + "';" );
 			
 			rs.close();
 			stmt.close();
@@ -87,7 +85,7 @@ public class CategoriaDOA {
 	}
 	
 	//modificar producto
-	public boolean modificarCategoria(int id, String nomb, String desc){
+	public boolean modificarProducto(){
 		
 		boolean existe = false;
 	
@@ -96,32 +94,16 @@ public class CategoriaDOA {
 			
 			stmt = db.getC().createStatement();
 			
-			//categoria(id I, nomb T, descr T)
-			//Eje--UPDATE Categoria SET id = 2, nombre = 'dw' WHERE id=1;
-			ResultSet rs;
-                        if (!nomb.isEmpty())
-                        {   
-                            if(!desc.isEmpty()){
-                                rs= stmt.executeQuery( "UPDATE Categoria SET nombre='"
-                                        + nomb + "',descripcion='" + desc + "' WHERE id="+id+" ;" );
-                                rs.close();
-                                stmt.close();
-                                db.getC().close();
-                            }else{
-                                rs= stmt.executeQuery( "UPDATE Categoria SET nombre='"
-                                        + nomb + "' WHERE id="+id+" ;" );
-                                rs.close();
-                                stmt.close();
-                                db.getC().close();
-                            }
-                        }else{
-                            rs= stmt.executeQuery( "UPDATE Categoria SET descripcion='"
-                                    + desc + "' WHERE id="+id+" ;" );
-                            rs.close();
-                            stmt.close();
-                            db.getC().close(); 
-                        }
+			//producto(nomb T, fIng T, codB T, perec I, idC I, idP I)
+			//Eje--UPDATE table_name SET column1 = value1, column2 = value2	WHERE condition;
 			
+			ResultSet rs = stmt.executeQuery( "UPDATE Producto SET nombre='" + nombre + "', fIngreso='" + fecha 
+											+ "', codBarras='" + codBarras + "', perecedero='" + perecedero
+											+ "', idCategoria='" + categoria + "', idProveedor='" + proveedor + "';" );
+			
+			rs.close();
+			stmt.close();
+			db.getC().close();
 			System.out.println("Consulta Satisfactoria");
 			
 		}catch ( Exception e ) {
@@ -131,5 +113,5 @@ public class CategoriaDOA {
 		return existe;
 		
 	}
-	
+	*/
 }

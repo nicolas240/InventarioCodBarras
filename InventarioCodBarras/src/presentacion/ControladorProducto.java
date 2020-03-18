@@ -10,28 +10,69 @@ import datos.*;
 
 public class ControladorProducto implements ActionListener{
 	
-	private final PanelProducto venProducto;
-	private LoginDAO login;
+	private final PanelProducto panelProducto;
+	private ProductoDOA producto;
 	
-	public ControladorProducto(PanelProducto vProducto) {
-		venProducto = vProducto;
+	public ControladorProducto(PanelProducto pProducto) {
+		panelProducto = pProducto;
 	}
 
 	//Manejo de los eventos que vienen de la ventana
 	public void actionPerformed(ActionEvent event) {
-        	//Evento boton Buscar Producto
-    	if(event.getSource() ==venProducto.getBtnBuscarProducto()) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra el producto
+		
+        //Evento boton Buscar Producto
+    	if(event.getSource() == panelProducto.getBtnBuscarProducto()) {
+    		
+    		producto = new ProductoDOA(panelProducto);
+    		
+    		//Mostrar datos en el panel
+    		if(producto.buscarProducto()){
+    			
+    			panelProducto.getTxtNombre().setText(producto.getNombre());
+    			panelProducto.getTxtFechaingreso().setText(producto.getFecha());
+    			panelProducto.getTxtCodigobarras().setText(producto.getCodBarras());
+    			System.out.println("Perecedero:" + producto.getPerecedero());
+    			if(producto.getPerecedero()==1)
+    				panelProducto.getRdbPerecederoSi().setSelected(true);
+    			else
+    				panelProducto.getRdbPerecederoNo().setSelected(true);
+    			panelProducto.getTxtCategoria().setText( String.valueOf(producto.getCategoria() ));
+    			panelProducto.getTxtProveedor().setText( String.valueOf(producto.getProveedor() ));
+    			panelProducto.getTxtCantidad().setText( String.valueOf(producto.getCantidad() ));
+    		}else {
+    			JOptionPane.showMessageDialog(null, "Producto no existe");
+    		}
+    		
+    		
+    			
     	}
     	
-    	//Evento boton Guardar
-    	if(event.getSource() == venProducto.getBtnGuardar()) {
+    	//Evento boton Guardar/Insertar
+    	if(event.getSource() == panelProducto.getBtnGuardar()) {
+    		
+    		producto = new ProductoDOA(panelProducto);
+    		
+    		if(producto.registroExiste()) {
+    			System.out.println("bool si");
+        		//modificar Producto
+        		if(producto.modificarProducto())
+        			JOptionPane.showMessageDialog(null, "Registro modificado"); 		
+    		}else {
+    			System.out.println("bool no");
+    			//Insertar Producto
+        		if(producto.registrarProducto())
+        			JOptionPane.showMessageDialog(null, "Registro ingresado");
+    		}
+    			
+    		
 
+    		
     	}
     	
     	//Evento boton Eliminar
-    	if(event.getSource() == venProducto.getBtnEliminar()) {
-
+    	if(event.getSource() == panelProducto.getBtnEliminar()) {
+    		//Se activa la aparecion del boton de eliminar si se encuentra el producto
+    		System.out.println("Eliminar");
     	}
     }	
 }

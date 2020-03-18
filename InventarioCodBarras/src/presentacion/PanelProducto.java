@@ -109,6 +109,7 @@ public class PanelProducto extends JPanel implements ActionListener{
 		this.add(lblFechaingreso);
 		
 		txtFechaingreso = new JTextField();
+		txtFechaingreso.setEditable(false);
 		txtFechaingreso.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtFechaingreso.setBounds(302, 248, 150, 25);
 		this.add(txtFechaingreso);
@@ -141,7 +142,8 @@ public class PanelProducto extends JPanel implements ActionListener{
 		lblCantidad.setBounds(160, 361, 135, 25);
 		this.add(lblCantidad);
 		
-		txtCantidad = new JTextField();
+		txtCantidad = new JTextField("0");
+		txtCantidad.setEditable(false);
 		txtCantidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtCantidad.setBounds(302, 362, 150, 25);
 		this.add(txtCantidad);
@@ -186,28 +188,135 @@ public class PanelProducto extends JPanel implements ActionListener{
 	}
 
 	
-	//Manejo de los eventos
-	public void actionPerformed(ActionEvent event) {
-		
-		
+	//Metodos set y get
+	public JTextField getTxtIngreseCodigoBarras() {
+		return txtIngreseCodigoBarras;
 	}
 
-            public ControladorProducto getControlador() {
-        if(controlador == null){
-            controlador = new ControladorProducto(this);
+
+	public void setTxtIngreseCodigoBarras(JTextField txtIngreseCodigoBarras) {
+		this.txtIngreseCodigoBarras = txtIngreseCodigoBarras;
+	}
+
+
+	public JTextField getTxtCodigobarras() {
+		return txtCodigobarras;
+	}
+
+
+	public void setTxtCodigobarras(JTextField txtCodigobarras) {
+		this.txtCodigobarras = txtCodigobarras;
+	}
+
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+
+	public JTextField getTxtFechaingreso() {
+		return txtFechaingreso;
+	}
+
+
+	public void setTxtFechaingreso(JTextField txtFechaingreso) {
+		this.txtFechaingreso = txtFechaingreso;
+	}
+
+
+	public JTextField getTxtCategoria() {
+		return txtCategoria;
+	}
+
+
+	public void setTxtCategoria(JTextField txtCategoria) {
+		this.txtCategoria = txtCategoria;
+	}
+
+
+	public JTextField getTxtProveedor() {
+		return txtProveedor;
+	}
+
+
+	public void setTxtProveedor(JTextField txtProveedor) {
+		this.txtProveedor = txtProveedor;
+	}
+
+
+	public JTextField getTxtCantidad() {
+		return txtCantidad;
+	}
+
+
+	public void setTxtCantidad(JTextField txtCantidad) {
+		this.txtCantidad = txtCantidad;
+	}
+
+
+	public JRadioButton getRdbPerecederoSi() {
+		return rdbPerecederoSi;
+	}
+
+
+	public void setRdbPerecederoSi(JRadioButton rdbPerecederoSi) {
+		this.rdbPerecederoSi = rdbPerecederoSi;
+	}
+
+
+	public JRadioButton getRdbPerecederoNo() {
+		return rdbPerecederoNo;
+	}
+
+
+	public void setRdbPerecederoNo(JRadioButton rdbPerecederoNo) {
+		this.rdbPerecederoNo = rdbPerecederoNo;
+	}
+
+
+	public void setBtnBuscarProducto(JButton btnBuscarProducto) {
+		this.btnBuscarProducto = btnBuscarProducto;
+	}
+
+
+	public void setBtnGuardar(JButton btnGuardar) {
+		this.btnGuardar = btnGuardar;
+	}
+
+
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
+	}
+
+	public JButton getBtnBuscarProducto() {
+		return btnBuscarProducto;
+	}
+
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+
+	public ControladorProducto getControlador() {
+		if(controlador == null){
+			controlador = new ControladorProducto(this);
         }
         return controlador;
     }
+	
+	//Manejo de los eventos
+	public void actionPerformed(ActionEvent event) {
+	}
 
-    public JButton getBtnBuscarProducto() {
-        return btnBuscarProducto;
-    }
-
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public JButton getBtnEliminar() {
-        return btnEliminar;
-    }
 }

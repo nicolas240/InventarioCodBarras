@@ -36,10 +36,12 @@ public class PanelBodega extends JPanel implements ActionListener{
     private JButton btnEliminar;
 
     private JLabel lblInfo;
-    private JLabel lblAdmin2;
+    private JTextField txtAdmin;
 	
-	public PanelBodega() {
-		
+    private VentanaPrincipal ventanaPrincipal;
+    
+	public PanelBodega(VentanaPrincipal ventana) {
+		ventanaPrincipal =ventana;
         this.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         this.setBounds(10, 120, 936, 531);
         this.setLayout(null);
@@ -117,12 +119,12 @@ public class PanelBodega extends JPanel implements ActionListener{
 		lblInfo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/infoBodega.png")));
 		lblInfo.setBounds(648, 13, 276, 505);
 		this.add(lblInfo);
-		
-		lblAdmin2 = new JLabel();
-		lblAdmin2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAdmin2.setBounds(302, 248, 150, 25);
-		add(lblAdmin2);
-		
+                
+                txtAdmin = new JTextField();
+		txtAdmin.setBounds(302, 247, 140, 25);
+		this.add(txtAdmin);
+		txtAdmin.setColumns(10);
+                txtAdmin.setEditable(false);
 	}
 
 	
@@ -160,7 +162,11 @@ public class PanelBodega extends JPanel implements ActionListener{
         return txtCapacidad;
     }
 
-    public JLabel getLblAdmin2() {
-        return lblAdmin2;
+    public JTextField getTxtAdmin() {
+        return txtAdmin;
+    }
+
+    public VentanaPrincipal getVentanaPrincipal() {
+        return ventanaPrincipal;
     }    
 }

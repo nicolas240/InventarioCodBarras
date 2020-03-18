@@ -132,7 +132,7 @@ public class ProveedorDOA {
 		boolean eliminado = false;
 		boolean hayProducto =existeProducto();
 		if(registroExiste() && !hayProducto){
-			if(JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar el proveedor?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
+			if(JOptionPane.showConfirmDialog(null, "Â¿Esta seguro desea eliminar el proveedor?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
 				try {
 					db = new ConexionDB();
 					

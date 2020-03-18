@@ -42,7 +42,7 @@ public class ControladorIngreso implements ActionListener{
 	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarDocumento().setText(venIngreso.getModelo().getUsuario());
 	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarBodega().setText("Admin");
     		}else {
-    			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
+    			JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrecto");
     		}
     		
     	}

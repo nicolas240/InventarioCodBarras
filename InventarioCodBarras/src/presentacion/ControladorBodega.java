@@ -26,7 +26,7 @@ public class ControladorBodega implements ActionListener{
     		//Mostrar datos en el panel
     		if(bodega.buscarBodega()){
     			panelBodega.getTxtNoBodega().setText(bodega.getIdBodega());
-    			panelBodega.getLblAdmin2().setText(String.valueOf(bodega.getIdAdministrador()));
+    			panelBodega.getTxtAdmin().setText(String.valueOf(bodega.getIdAdministrador()));
     			panelBodega.getTxtCapacidad().setText(String.valueOf(bodega.getCapacidad()));
     		}else {
     			JOptionPane.showMessageDialog(null, "Bodega no existe");

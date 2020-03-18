@@ -26,6 +26,7 @@ public class BodegaDOA {
 	public boolean registrarBodega(){
 		idBodega= panelBodega.getTxtNoBodega().getText();
                 capacidad=Integer.parseInt(panelBodega.getTxtCapacidad().getText());
+                idAdministrador=Integer.parseInt(panelBodega.getVentanaPrincipal().getLblMostrarDocumento().getText());
 		boolean existe = false;
 	
 		try {
@@ -97,8 +98,8 @@ public class BodegaDOA {
 	//modificar Bodega
 	public boolean modificarBodega(){
 		boolean existe = false;
-	                idBodega= panelBodega.getTxtNoBodega().getText();
-                idAdministrador=Integer.parseInt(panelBodega.getTxtAdmin().getText());
+	        idBodega= panelBodega.getTxtNoBodega().getText();
+                idAdministrador=idAdministrador=Integer.parseInt(panelBodega.getTxtAdmin().getText());
                 capacidad=Integer.parseInt(panelBodega.getTxtCapacidad().getText());
 		try {
 			db = new ConexionDB();
@@ -108,8 +109,7 @@ public class BodegaDOA {
 			//bodega(idB T, idAd I, capc I)
 			//Eje--UPDATE Proveedor SET rut = 2122312541515, nombre = 'dw' WHERE id=1;
 			
-                        stmt.executeUpdate( "UPDATE Bodega SET idAdmin="
-                                + idAdministrador + ", cantidad="+capacidad+" WHERE idBodega='"
+                        stmt.executeUpdate( "UPDATE Bodega SET capacidad="+capacidad+" WHERE idBodega='"
                                 +idBodega+"';" );
                         db.getC().commit();
                         stmt.close();

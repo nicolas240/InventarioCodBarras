@@ -54,7 +54,7 @@ public class ControladorProveedor implements ActionListener{
             if(proveedor.existeProducto()) {
     			System.out.println("bool si");
         		//modificar Categoria
-        		JOptionPane.showMessageDialog(null, "¡Hay productos con ese proveedor, no se puede eliminar!");
+        		JOptionPane.showMessageDialog(null, "Â¡Hay productos con ese proveedor, no se puede eliminar!");
     		}else {
     			System.out.println("bool no");
     			//Insertar Producto

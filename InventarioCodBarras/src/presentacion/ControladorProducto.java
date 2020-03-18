@@ -2,8 +2,6 @@ package presentacion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 import datos.*;
@@ -11,7 +9,7 @@ import datos.*;
 public class ControladorProducto implements ActionListener{
 	
 	private final PanelProducto panelProducto;
-	private ProductoDOA producto;
+	private ProductoDAO producto;
 	
 	public ControladorProducto(PanelProducto pProducto) {
 		panelProducto = pProducto;
@@ -23,7 +21,7 @@ public class ControladorProducto implements ActionListener{
         //Evento boton Buscar Producto
     	if(event.getSource() == panelProducto.getBtnBuscarProducto()) {
     		
-    		producto = new ProductoDOA(panelProducto);
+    		producto = new ProductoDAO(panelProducto);
     		
     		//Mostrar datos en el panel
     		if(producto.buscarProducto()){
@@ -41,24 +39,20 @@ public class ControladorProducto implements ActionListener{
     			panelProducto.getTxtCantidad().setText( String.valueOf(producto.getCantidad() ));
     		}else {
     			JOptionPane.showMessageDialog(null, "Producto no existe");
-    		}
-    		
-    		
+    		}		
     			
     	}
     	
     	//Evento boton Guardar/Insertar
     	if(event.getSource() == panelProducto.getBtnGuardar()) {
     		
-    		producto = new ProductoDOA(panelProducto);
+    		producto = new ProductoDAO(panelProducto);
     		
     		if(producto.registroExiste()) {
-    			System.out.println("bool si");
-        		//modificar Producto
+         		//modificar Producto
         		if(producto.modificarProducto())
         			JOptionPane.showMessageDialog(null, "Registro modificado"); 		
     		}else {
-    			System.out.println("bool no");
     			//Insertar Producto
         		if(producto.registrarProducto())
         			JOptionPane.showMessageDialog(null, "Registro ingresado");
@@ -71,8 +65,15 @@ public class ControladorProducto implements ActionListener{
     	
     	//Evento boton Eliminar
     	if(event.getSource() == panelProducto.getBtnEliminar()) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra el producto
-    		System.out.println("Eliminar");
+    		
+    		producto = new ProductoDAO(panelProducto);
+    		
+    		if(producto.eliminarRegistro())
+    			JOptionPane.showMessageDialog(null, "Registro eliminado"); 
+    		else
+    			JOptionPane.showMessageDialog(null, "Operacion no realizada"); 
+    		
     	}
     }	
+	
 }

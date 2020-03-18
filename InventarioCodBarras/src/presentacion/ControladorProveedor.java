@@ -19,6 +19,7 @@ public class ControladorProveedor implements ActionListener{
 
 	//Manejo de los eventos que vienen de la ventana
 	public void actionPerformed(ActionEvent event) {
+		//buscar Proveedor
        	if(event.getSource() == panelProveedor.getBtnBuscarProveedor()) {
     		
     		proveedor = new ProveedorDOA(panelProveedor);
@@ -39,12 +40,12 @@ public class ControladorProveedor implements ActionListener{
     			System.out.println("bool si");
         		//modificar Categoria
         		if(proveedor.modificarProveedor())
-        			JOptionPane.showMessageDialog(null, "Registro modificado");
+        			JOptionPane.showMessageDialog(null, "Proveedor modificado");
     		}else {
     			System.out.println("bool no");
     			//Insertar Producto
         		if(proveedor.registrarProveedor())
-        			JOptionPane.showMessageDialog(null, "Registro ingresado");
+        			JOptionPane.showMessageDialog(null, "Proveedor ingresado");
     		}
     	}
     	
@@ -53,7 +54,7 @@ public class ControladorProveedor implements ActionListener{
             if(proveedor.existeProducto()) {
     			System.out.println("bool si");
         		//modificar Categoria
-        		JOptionPane.showMessageDialog(null, "Hay productos con ese proveedor");
+        		JOptionPane.showMessageDialog(null, "¡Hay productos con ese proveedor, no se puede eliminar!");
     		}else {
     			System.out.println("bool no");
     			//Insertar Producto

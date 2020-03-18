@@ -31,7 +31,7 @@ public class PanelIngProducto extends JPanel implements ActionListener{
     private JTextField txtCategoria;
     private JLabel lblProveedor;
     private JTextField txtProveedor;
-    private JLabel lblCantidad;
+    private JLabel lblCantidadDisponible;
     private JTextField txtCantidad;
     private JLabel lblPerecedero;
     private ButtonGroup selectPerecedero;
@@ -40,8 +40,11 @@ public class PanelIngProducto extends JPanel implements ActionListener{
     private JButton btnIngresar;
     private JButton btnVerificar;
     private JLabel lblInfo;
+    private VentanaPrincipal ventanaPrincipal;
 	
-	public PanelIngProducto() {
+	public PanelIngProducto(VentanaPrincipal vPrincipal) {
+		
+		setVentanaPrincipal(vPrincipal);
 		
         this.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         this.setBounds(10, 120, 936, 531);
@@ -115,10 +118,10 @@ public class PanelIngProducto extends JPanel implements ActionListener{
 		this.add(txtProveedor);
 		txtProveedor.setColumns(10);
 		
-		lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCantidad.setBounds(170, 314, 135, 25);
-		this.add(lblCantidad);
+		lblCantidadDisponible = new JLabel("Cantidad Disp.:");
+		lblCantidadDisponible.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCantidadDisponible.setBounds(170, 314, 135, 25);
+		this.add(lblCantidadDisponible);
 		
 		txtCantidad = new JTextField();
 		txtCantidad.setEditable(false);
@@ -172,7 +175,8 @@ public class PanelIngProducto extends JPanel implements ActionListener{
     public JButton getBtnVerificar() {
         return btnVerificar;
     }
-public ControladorIngProducto getControl() {
+    
+    public ControladorIngProducto getControl() {
         if(controlador == null){
             controlador = new ControladorIngProducto(this);
         }
@@ -181,9 +185,79 @@ public ControladorIngProducto getControl() {
 	
 	//Manejo de los eventos
 	public void actionPerformed(ActionEvent event) {
-    	
+	}
 
-		
+	//Get y set
+	public JTextField getTxtCodigobarras() {
+		return txtCodigobarras;
+	}
+
+	public void setTxtCodigobarras(JTextField txtCodigobarras) {
+		this.txtCodigobarras = txtCodigobarras;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JTextField getTxtFechaingreso() {
+		return txtFechaingreso;
+	}
+
+	public void setTxtFechaingreso(JTextField txtFechaingreso) {
+		this.txtFechaingreso = txtFechaingreso;
+	}
+
+	public JTextField getTxtCategoria() {
+		return txtCategoria;
+	}
+
+	public void setTxtCategoria(JTextField txtCategoria) {
+		this.txtCategoria = txtCategoria;
+	}
+
+	public JTextField getTxtProveedor() {
+		return txtProveedor;
+	}
+
+	public void setTxtProveedor(JTextField txtProveedor) {
+		this.txtProveedor = txtProveedor;
+	}
+
+	public JTextField getTxtCantidad() {
+		return txtCantidad;
+	}
+
+	public void setTxtCantidad(JTextField txtCantidad) {
+		this.txtCantidad = txtCantidad;
+	}
+
+	public JRadioButton getRdbPerecederoSi() {
+		return rdbPerecederoSi;
+	}
+
+	public void setRdbPerecederoSi(JRadioButton rdbPerecederoSi) {
+		this.rdbPerecederoSi = rdbPerecederoSi;
+	}
+
+	public JRadioButton getRdbPerecederoNo() {
+		return rdbPerecederoNo;
+	}
+
+	public void setRdbPerecederoNo(JRadioButton rdbPerecederoNo) {
+		this.rdbPerecederoNo = rdbPerecederoNo;
+	}
+
+	public VentanaPrincipal getVentanaPrincipal() {
+		return ventanaPrincipal;
+	}
+
+	public void setVentanaPrincipal(VentanaPrincipal ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
 	}
 
 }

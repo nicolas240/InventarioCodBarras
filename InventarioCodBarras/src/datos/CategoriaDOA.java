@@ -131,7 +131,7 @@ public class CategoriaDOA {
 		boolean eliminado = false;
 		boolean hayProducto =existeProducto();
 		if(registroExiste() && !hayProducto){
-			if(JOptionPane.showConfirmDialog(null, "Â¿Esta seguro desea eliminar el producto?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
+			if(JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar la categoria?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
 				try {
 					db = new ConexionDB();
 					

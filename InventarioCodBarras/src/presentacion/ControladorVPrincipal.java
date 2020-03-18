@@ -11,7 +11,7 @@ import datos.*;
 public class ControladorVPrincipal implements ActionListener{
 	
 	private final VentanaPrincipal venPrincipal;
-	private LoginDAO login;
+
 	
 	public ControladorVPrincipal(VentanaPrincipal vPrincipal) {
 		venPrincipal = vPrincipal;

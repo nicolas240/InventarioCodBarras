@@ -36,11 +36,15 @@ public class ControladorIngreso implements ActionListener{
     		if(login.loginAdmin()) {
 	    		venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
 	    		venIngreso.getModelo().admin();
+	    		venIngreso.getModelo().setUsuario(venIngreso.getTxtUsuario().getText());
+	    		
+	    		//Asignar a los botones labels de informacion de usuario
+	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarDocumento().setText(venIngreso.getModelo().getUsuario());
+	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarBodega().setText("Admin");
     		}else {
-    			JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrecto");
+    			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
     		}
     		
-    		venIngreso.getModelo().setUsuario( Integer.parseInt( venIngreso.getTxtUsuario().getText() ) );
     	}
     	
     	//Evento boton Login Bodega
@@ -49,19 +53,26 @@ public class ControladorIngreso implements ActionListener{
     		login = new LoginDAO(venIngreso);
 			
     		if(login.loginBodega()){
+    			
+    			login.consultaUsuario();
+    			
     			venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
         		venIngreso.getModelo().bodega();
+        		venIngreso.getModelo().setUsuario(venIngreso.getTxtDocumento().getText());
+        		
+        		//Asignar a los botones labels de informacion de usuario
+	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarDocumento().setText(venIngreso.getModelo().getUsuario());
+	    		venIngreso.getModelo().getVenPrincipal().getLblMostrarBodega().setText(login.getBodega());
+	    		
     		}else {
     			JOptionPane.showMessageDialog(null, "Documento incorrecto");
     		}
     		
-    		venIngreso.getModelo().setUsuario( Integer.parseInt( venIngreso.getTxtDocumento().getText() ) );
     	}
     	
     	//Evento boton Atras
     	if(event.getSource() == venIngreso.getBtnAtras()) {
     		venIngreso.panelBotonesSeleccion();
-            
     	}
 		
 	}

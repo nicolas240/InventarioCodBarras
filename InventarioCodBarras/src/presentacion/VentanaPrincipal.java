@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
 
 
 @SuppressWarnings("serial")
@@ -34,6 +36,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 
     private JLabel lblUdstock;
+    private JLabel lblUsuario;
+    private JLabel lblMostrarDocumento;
+    private JLabel lblMostrarBodega;
+    private JLabel lblBodega;
     
 
 	
@@ -61,6 +67,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     	panelPrincipal.add(panelMenu);
     	panelMenu.setLayout(null);
     	
+    	datosUsuario();
+    	   	
     	//Cargar componentes segun cargo
         System.out.println(cargo);
         if(cargo == "Admin")
@@ -130,6 +138,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		btnSalir.addActionListener(getControl());
 		panelMenu.add(btnSalir);
 		
+		datosUsuario();
+		
 		panelMenu.revalidate();
 		panelMenu.repaint();
     	
@@ -161,9 +171,36 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		btnSalir.addActionListener(getControl());
 		panelMenu.add(btnSalir);
 		
+		datosUsuario();
+		
 		panelMenu.revalidate();
 		panelMenu.repaint();
 		
+    }
+    
+    //Carga labels que muestra informacion del usuario que inicio secion
+    public void datosUsuario() {
+    	lblUsuario = new JLabel("Usuario:");
+    	lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 14));
+    	lblUsuario.setBounds(554, 13, 83, 16);
+    	panelMenu.add(lblUsuario);
+    	
+    	lblMostrarDocumento = new JLabel("Documento");
+    	lblMostrarDocumento.setForeground(new Color(0, 128, 128));
+    	lblMostrarDocumento.setFont(new Font("Tahoma", Font.BOLD, 14));
+    	lblMostrarDocumento.setBounds(649, 13, 117, 16);
+    	panelMenu.add(lblMostrarDocumento);
+    	
+    	lblBodega = new JLabel("Bodega:");
+    	lblBodega.setFont(new Font("Tahoma", Font.BOLD, 14));
+    	lblBodega.setBounds(554, 42, 83, 16);
+    	panelMenu.add(lblBodega);
+    	
+    	lblMostrarBodega = new JLabel("Bodega");
+    	lblMostrarBodega.setForeground(new Color(0, 128, 128));
+    	lblMostrarBodega.setFont(new Font("Tahoma", Font.BOLD, 14));
+    	lblMostrarBodega.setBounds(649, 42, 117, 16);
+    	panelMenu.add(lblMostrarBodega);
     }
     
     //Llamar al panel para busqueda/edicion/ingreso de un productos
@@ -193,7 +230,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     //Llamar al panel para busqueda/edicion/ingreso de una bodega
     public void panelBodega() {
     	PanelBodega panelBodega = new PanelBodega();
-            panelAux.removeAll();
+        panelAux.removeAll();
         panelAux = panelBodega;
         panelPrincipal.add(panelAux);      
         panelAux.revalidate();
@@ -212,7 +249,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     
     //Llamar al panel para ingresar un producto
     public void panelIngProducto() {
-    	PanelIngProducto panelIngProducto = new PanelIngProducto();
+    	PanelIngProducto panelIngProducto = new PanelIngProducto(this);
         panelAux.removeAll();
         panelAux = panelIngProducto;
         panelPrincipal.add(panelAux);      
@@ -222,7 +259,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     
     //Llamar al panel para retirar un producto
     public void panelRetProducto() {
-    	PanelRetProducto panelRetProducto = new PanelRetProducto();
+    	PanelRetProducto panelRetProducto = new PanelRetProducto(this);
         panelAux.removeAll();
         panelAux = panelRetProducto;
         panelPrincipal.add(panelAux);      
@@ -282,5 +319,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	public void setPanelReloj(PanelReloj panelReloj) {
 		this.panelReloj = panelReloj;
+	}
+
+	public JLabel getLblMostrarDocumento() {
+		return lblMostrarDocumento;
+	}
+
+	public void setLblMostrarDocumento(JLabel lblMostrarDocumento) {
+		this.lblMostrarDocumento = lblMostrarDocumento;
+	}
+
+	public JLabel getLblMostrarBodega() {
+		return lblMostrarBodega;
+	}
+
+	public void setLblMostrarBodega(JLabel lblMostrarBodega) {
+		this.lblMostrarBodega = lblMostrarBodega;
 	}
 }

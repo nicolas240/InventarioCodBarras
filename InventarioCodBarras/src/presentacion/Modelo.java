@@ -9,7 +9,7 @@ public class Modelo{
     private VentanaIngreso venIngreso;
     private VentanaPrincipal venPrincipal;
     
-    private int usuario;
+    private String usuario;
 
     // Hace visible la ventana de ingreso
     public void iniciar() {
@@ -34,7 +34,7 @@ public class Modelo{
     public VentanaIngreso getVenIngreso() {
         if (venIngreso == null) {
             venIngreso = new VentanaIngreso(this);
-        }
+        }       
         return venIngreso;
     }
     
@@ -55,12 +55,25 @@ public class Modelo{
         return venPrincipal;
     }
 
-	public int getUsuario() {
+    //get y set
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(int usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public VentanaPrincipal getVenPrincipal() {
+		return venPrincipal;
+	}
+
+	public void setVenPrincipal(VentanaPrincipal venPrincipal) {
+		this.venPrincipal = venPrincipal;
+	}
+
+	public void setVenIngreso(VentanaIngreso venIngreso) {
+		this.venIngreso = venIngreso;
 	}
 
 }

@@ -25,9 +25,11 @@ public class ProveedorDOA {
 	
 	//Registrar una nueva categoria
 	public boolean registrarProveedor(){
-                nombre= panelProveedor.getTxtNombre().getText();
-                rut=Integer.parseInt(panelProveedor.getTxtRut().getText());
-                telefono=Integer.parseInt(panelProveedor.getTxtTelefono().getText());
+		
+        nombre= panelProveedor.getTxtNombre().getText();
+        rut=Integer.parseInt(panelProveedor.getTxtRut().getText());
+        telefono=Integer.parseInt(panelProveedor.getTxtTelefono().getText());
+        
 		boolean existe = false;
 	
 		try {
@@ -44,6 +46,8 @@ public class ProveedorDOA {
 			stmt.close();
 			db.getC().close();
 			System.out.println("Consulta Satisfactoria");
+			
+			existe = true;
 			
 		}catch ( Exception e ) {
 		   System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -107,12 +111,12 @@ public class ProveedorDOA {
 			//Proveedor(nomb T, rut I, tel I)
 			//Eje--UPDATE Proveedor SET rut = 2122312541515, nombre = 'dw' WHERE id=1;
 			
-                        stmt.executeUpdate( "UPDATE Proveedor SET nombre='"
-                                + nombre + "', telefono="+telefono+
-                                " WHERE rut="+rut+";" );
-                        db.getC().commit();
-                        stmt.close();
-                        db.getC().close();
+            stmt.executeUpdate( "UPDATE Proveedor SET nombre='"
+                    + nombre + "', telefono="+telefono+
+                    " WHERE rut="+rut+";" );
+            db.getC().commit();
+            stmt.close();
+            db.getC().close();
 			System.out.println("Consulta Satisfactoria");
 			existe=true;
 		}catch ( Exception e ) {
@@ -128,7 +132,7 @@ public class ProveedorDOA {
 		boolean eliminado = false;
 		boolean hayProducto =existeProducto();
 		if(registroExiste() && !hayProducto){
-			if(JOptionPane.showConfirmDialog(null, "Â¿Esta seguro desea eliminar el proveedor?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
+			if(JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar el proveedor?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
 				try {
 					db = new ConexionDB();
 					

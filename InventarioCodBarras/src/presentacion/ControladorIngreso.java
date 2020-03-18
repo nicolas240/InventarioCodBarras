@@ -37,7 +37,7 @@ public class ControladorIngreso implements ActionListener{
 	    		venIngreso.getModelo().getVenIngreso().dispose();	//Cierra la ventana actual
 	    		venIngreso.getModelo().admin();
     		}else {
-    			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
+    			JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrecto");
     		}
     		
     		venIngreso.getModelo().setUsuario( Integer.parseInt( venIngreso.getTxtUsuario().getText() ) );
@@ -61,6 +61,7 @@ public class ControladorIngreso implements ActionListener{
     	//Evento boton Atras
     	if(event.getSource() == venIngreso.getBtnAtras()) {
     		venIngreso.panelBotonesSeleccion();
+            
     	}
 		
 	}

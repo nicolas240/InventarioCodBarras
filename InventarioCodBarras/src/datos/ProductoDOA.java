@@ -186,7 +186,7 @@ public class ProductoDOA {
 		
 		if(registroExiste()){
 			
-			if(JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar el producto?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
+			if(JOptionPane.showConfirmDialog(null, "Â¿Esta seguro desea eliminar el producto?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
 			
 				try {
 					

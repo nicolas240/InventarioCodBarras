@@ -35,7 +35,7 @@ public class PanelProveedor extends JPanel implements ActionListener{
     private JButton btnEliminar;
     private JLabel lblInfo;
     private JTextField txtNombre;
-	
+
 	public PanelProveedor() {
 		
         this.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -148,4 +148,20 @@ public class PanelProveedor extends JPanel implements ActionListener{
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
+    public JTextField getTxtBusRut() {
+        return txtBusRut;
+    }
+
+    public JTextField getTxtRut() {
+        return txtRut;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }    
+    
 }

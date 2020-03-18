@@ -6,32 +6,60 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import datos.*;
+import datos.ProveedorDOA;
 
 public class ControladorProveedor implements ActionListener{
 	
-	private final PanelProveedor venProveedor;
-	private LoginDAO login;
+	private final PanelProveedor panelProveedor;
+	private ProveedorDOA proveedor;
 	
 	public ControladorProveedor(PanelProveedor vProveedor) {
-		venProveedor = vProveedor;
+		panelProveedor = vProveedor;
 	}
 
 	//Manejo de los eventos que vienen de la ventana
 	public void actionPerformed(ActionEvent event) {
-       	//Evento boton Buscar Bodega
-    	if(event.getSource() == venProveedor.getBtnBuscarProveedor()) {
-    		//Se activa la aparecion del boton de eliminar si se encuentra la bodega
+       	if(event.getSource() == panelProveedor.getBtnBuscarProveedor()) {
+    		
+    		proveedor = new ProveedorDOA(panelProveedor);
+    		//Mostrar datos en el panel
+    		if(proveedor.buscarProveedor()){
+    			panelProveedor.getTxtNombre().setText(proveedor.getNombre());
+    			panelProveedor.getTxtRut().setText(String.valueOf(proveedor.getRut()));
+    			panelProveedor.getTxtTelefono().setText(String.valueOf(proveedor.getTelefono()));
+    		}else {
+    			JOptionPane.showMessageDialog(null, "Proveedor no existe");
+    		}
     	}
     	
     	//Evento boton Guardar
-    	if(event.getSource() ==venProveedor.getBtnGuardar() ) {
-
+    	if(event.getSource() == panelProveedor.getBtnGuardar()) {
+            proveedor = new ProveedorDOA(panelProveedor);
+            if(proveedor.registroExiste()) {
+    			System.out.println("bool si");
+        		//modificar Categoria
+        		if(proveedor.modificarProveedor())
+        			JOptionPane.showMessageDialog(null, "Registro modificado");
+    		}else {
+    			System.out.println("bool no");
+    			//Insertar Producto
+        		if(proveedor.registrarProveedor())
+        			JOptionPane.showMessageDialog(null, "Registro ingresado");
+    		}
     	}
     	
     	//Evento boton Eliminar
-    	if(event.getSource() == venProveedor.getBtnEliminar()) {
-
+    	if(event.getSource() ==panelProveedor.getBtnEliminar()) {
+            if(proveedor.existeProducto()) {
+    			System.out.println("bool si");
+        		//modificar Categoria
+        		JOptionPane.showMessageDialog(null, "Hay productos con ese proveedor");
+    		}else {
+    			System.out.println("bool no");
+    			//Insertar Producto
+        		if(proveedor.eliminarRegistro())
+        			JOptionPane.showMessageDialog(null, "Categoria Eliminada");
+    		}
     	}	
     }	
 }

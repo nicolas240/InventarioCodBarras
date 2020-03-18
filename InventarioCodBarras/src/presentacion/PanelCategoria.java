@@ -23,17 +23,21 @@ public class PanelCategoria extends JPanel implements ActionListener{
     
     private JLabel lblProducto;
     private JLabel lblIngreseId;
-    private JTextField txtIngreseId;
-    private JButton btnBuscarCategoria;
-    private JSeparator separador;
     private JLabel lblId;
-    private JTextField txtCodigobarras;
     private JLabel lblNombre;
-    private JTextField txtNombre;
     private JLabel lblDescripcion;
-    private JButton btnGuardar;
-    private JButton btnEliminar;
     private JLabel lblInfo;
+    
+    private JButton btnBuscarCategoria;
+    private JButton btnGuardar;
+    private JButton btnEliminar;    
+    private JSeparator separador;
+    
+    private JTextField txtIngreseId;
+    private JTextField txtId;
+    private JTextField txtNombre;    
+   
+    private JTextArea txtrDescripcion;
 	
 	public PanelCategoria() {
 		
@@ -75,11 +79,11 @@ public class PanelCategoria extends JPanel implements ActionListener{
 		lblId.setBounds(160, 172, 130, 25);
 		this.add(lblId);
 		
-		txtCodigobarras = new JTextField();
-		txtCodigobarras.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtCodigobarras.setBounds(302, 172, 150, 25);
-		this.add(txtCodigobarras);
-		txtCodigobarras.setColumns(10);
+		txtId = new JTextField();
+		txtId.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtId.setBounds(302, 172, 150, 25);
+		this.add(txtId);
+		txtId.setColumns(10);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -117,7 +121,7 @@ public class PanelCategoria extends JPanel implements ActionListener{
 		lblInfo.setBounds(648, 13, 276, 505);
 		this.add(lblInfo);
 		
-		JTextArea txtrDescripcion = new JTextArea();
+		txtrDescripcion = new JTextArea();
 		txtrDescripcion.setBounds(302, 254, 150, 116);
 		add(txtrDescripcion);
 	}
@@ -148,7 +152,7 @@ public class PanelCategoria extends JPanel implements ActionListener{
         }
         return controlador;
     }
-    public JButton getBtnBuscarBodega() {
+    public JButton getBtnBuscarCategoria() {
         return btnBuscarCategoria;
     }
 
@@ -159,4 +163,20 @@ public class PanelCategoria extends JPanel implements ActionListener{
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
+
+    public JTextField getTxtIngreseId() {
+        return txtIngreseId;
+    }
+
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JTextArea getTxtrDescripcion() {
+        return txtrDescripcion;
+    }    
 }

@@ -65,8 +65,8 @@ public class BodegaDOA {
 			
 			ResultSet rs = stmt.executeQuery( 
                                 "SELECT * FROM Bodega WHERE idBodega='" + 
-                                        panelBodega.getTxtAdmin()
-                                        + "';" );
+                                        //panelBodega.getTxtAdmin()
+                                        "';" );
 			
 			rs.close();
 			stmt.close();

@@ -27,6 +27,6 @@ public class ControladorIngProducto implements ActionListener{
     	//Evento boton Eliminar
     	if(event.getSource() == venIngProducto.getBtnVerificar()) {
 
-    	}	
+    	}
     }	
 }

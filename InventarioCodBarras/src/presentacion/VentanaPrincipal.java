@@ -193,7 +193,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     //Llamar al panel para busqueda/edicion/ingreso de una bodega
     public void panelBodega() {
     	PanelBodega panelBodega = new PanelBodega();
-            panelAux.removeAll();
+        panelAux.removeAll();
         panelAux = panelBodega;
         panelPrincipal.add(panelAux);      
         panelAux.revalidate();

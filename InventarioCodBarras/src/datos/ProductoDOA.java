@@ -18,11 +18,11 @@ public class ProductoDOA {
 	private String fecha;
 	private String codBarras;
 	private int perecedero;
-	private String sPerecedero;
+	//private String sPerecedero;
 	private int categoria;
-	private String sCategoria;
+	//private String sCategoria;
 	private int proveedor;
-	private String sProveedor;
+	//private String sProveedor;
 	private int cantidad;
 	
 	public ProductoDOA(PanelProducto pProducto){
@@ -176,14 +176,61 @@ public class ProductoDOA {
 		
 	}
 	
+	
 	//Eliminar Registro
 	public boolean eliminarRegistro() {
 		
-		return false;
-	}
+		codBarras = panelProducto.getTxtCodigobarras().getText();
+		
+		boolean eliminado = false;
+		
+		if(registroExiste()){
+			
+			if(JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar el producto?", "Alerta!", JOptionPane.YES_NO_OPTION) == 0) {
+			
+				try {
+					
+					db = new ConexionDB();
+					
+					db.getC().setAutoCommit(false);
+					stmt = db.getC().createStatement();
+					
+					//producto(nomb T, fIng T, codB T, perec I, idC I, idP I)
+					//Eje--INSERT INTO Producto VALUES ('ariel ropa color','14-03-2020','ARI01',1,1,200000002);
+					System.out.println( "DELETE from COMPANY where ID='"+ codBarras + "';" );
+					
+					//Borrar primero de tabla de ExistenciaProductoBodega
+					stmt.executeUpdate( "DELETE FROM ExistenciaProductoBodega WHERE idProducto='"+ codBarras + "';" );
+					
+					//Borrar primero de tabla Producto
+					stmt.executeUpdate( "DELETE FROM Producto WHERE codBarras='"+ codBarras + "';" );
+					
+					db.getC().commit();
+					stmt.close();
+					db.getC().close();
+					
+					eliminado = true;
+	
+				}catch ( Exception e ) {
+				   System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+				   JOptionPane.showMessageDialog(null, "Base de datos no disponible en el momento");
+			   	}
+				
+			}
+				
+		}else {
+			eliminado = false;
+		}
+		
+		return eliminado;
+		
+
+}
 	
 	//Verificar si registro existe
 	public boolean registroExiste() {
+		
+		codBarras = panelProducto.getTxtCodigobarras().getText();
 		
 		boolean existe = false;
 		

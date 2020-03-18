@@ -61,7 +61,6 @@ public class ControladorIngreso implements ActionListener{
     	//Evento boton Atras
     	if(event.getSource() == venIngreso.getBtnAtras()) {
     		venIngreso.panelBotonesSeleccion();
-            
     	}
 		
 	}

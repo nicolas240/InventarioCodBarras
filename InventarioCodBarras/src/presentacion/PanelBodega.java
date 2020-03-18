@@ -34,9 +34,9 @@ public class PanelBodega extends JPanel implements ActionListener{
     private JButton btnGuardar;
 
     private JButton btnEliminar;
+
     private JLabel lblInfo;
-    private JTextField txtAdmin;
-    private JTextField textField;
+    private JLabel lblAdmin2;
 	
 	public PanelBodega() {
 		
@@ -118,22 +118,11 @@ public class PanelBodega extends JPanel implements ActionListener{
 		lblInfo.setBounds(648, 13, 276, 505);
 		this.add(lblInfo);
 		
-		txtAdmin = new JTextField();
-		txtAdmin.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtAdmin.setColumns(10);
-		txtAdmin.setBounds(302, 248, 150, 25);
-		add(txtAdmin);
+		lblAdmin2 = new JLabel();
+		lblAdmin2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAdmin2.setBounds(302, 248, 150, 25);
+		add(lblAdmin2);
 		
-		JLabel lblBodeguero = new JLabel("Bodeguero:");
-		lblBodeguero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblBodeguero.setBounds(160, 285, 140, 25);
-		add(lblBodeguero);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBounds(302, 286, 150, 25);
-		add(textField);
 	}
 
 	
@@ -157,5 +146,21 @@ public class PanelBodega extends JPanel implements ActionListener{
 
     public JButton getBtnEliminar() {
         return btnEliminar;
-    }        
+    }
+
+    public JTextField getTxtBusBodega() {
+        return txtBusBodega;
+    }
+
+    public JTextField getTxtNoBodega() {
+        return txtNoBodega;
+    }
+
+    public JTextField getTxtCapacidad() {
+        return txtCapacidad;
+    }
+
+    public JLabel getLblAdmin2() {
+        return lblAdmin2;
+    }    
 }
